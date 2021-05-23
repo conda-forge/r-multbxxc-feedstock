@@ -1,5 +1,4 @@
 {% set version = '1.0.1' %}
-
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -31,7 +30,6 @@ requirements:
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
-
   host:
     - r-base
     - r-rcpp >=1.0.0
@@ -39,7 +37,6 @@ requirements:
     - r-rmumps >=5.2.1_6
     - libblas
     - liblapack
-
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
@@ -56,11 +53,13 @@ test:
 
 about:
   home: https://metasys.insa-toulouse.fr/software/influx/
-  license: GPL (>= 2)
+  license: GPL-2.0-or-later
   summary: 'Contains auxiliary routines for influx software. This packages is not intended to
     be used directly. Influx was published here: Sokol et al. (2012) <doi:10.1093/bioinformatics/btr716>.'
   license_family: GPL
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
+
 extra:
   recipe-maintainers:
      - conda-forge/r
