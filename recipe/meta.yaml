@@ -1,4 +1,4 @@
-{% set version = '1.0.1' %}
+{% set version = "1.0.2" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/multbxxc_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/multbxxc/multbxxc_{{ version }}.tar.gz
-  sha256: f5911f334d3390cbb7747fa6db95a7c792e74117c493acadf15752c12457e5c6
+  sha256: 21c38ca101db520bac315b3e0fef3b27b2574e41678f964f020e6f875f1d15bd
 
 build:
-  merge_build_host: True  # [win]
-  number: 3
+  merge_build_host: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -22,7 +22,9 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}              # [not win]
+    - {{ stdlib("c") }}                # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
+    - {{ stdlib("c") }}                # [win]
     - {{ compiler('cxx') }}            # [not win]
     - {{ compiler('m2w64_cxx') }}      # [win]
     - {{ posix }}filesystem        # [win]
@@ -54,16 +56,15 @@ test:
 about:
   home: https://metasys.insa-toulouse.fr/software/influx/
   license: GPL-2.0-or-later
-  summary: 'Contains auxiliary routines for influx software. This packages is not intended to
-    be used directly. Influx was published here: Sokol et al. (2012) <doi:10.1093/bioinformatics/btr716>.'
+  summary: 'Contains auxiliary routines for influx software. This packages is not intended to be used directly. Influx was published here: Sokol et al. (2012) <doi:10.1093/bioinformatics/btr716>.'
   license_family: GPL
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
 
 extra:
   recipe-maintainers:
-     - conda-forge/r
-     - sgsokol
+    - conda-forge/r
+    - sgsokol
 
 # The original CRAN metadata for this package was:
 
