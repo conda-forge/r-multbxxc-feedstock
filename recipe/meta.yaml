@@ -1,4 +1,4 @@
-{% set version = "1.0.2" %}
+{% set version = "1.0.3" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/multbxxc_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/multbxxc/multbxxc_{{ version }}.tar.gz
-  sha256: 21c38ca101db520bac315b3e0fef3b27b2574e41678f964f020e6f875f1d15bd
+  sha256: 843fdab5383abfa63e7475d2f977dcc36d58ad4e5b7f1f73702b66698cbb685d
 
 build:
   merge_build_host: true  # [win]
