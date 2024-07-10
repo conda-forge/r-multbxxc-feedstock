@@ -1,6 +1,5 @@
 {% set version = "1.0.3" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-multbxxc
@@ -13,8 +12,7 @@ source:
   sha256: 843fdab5383abfa63e7475d2f977dcc36d58ad4e5b7f1f73702b66698cbb685d
 
 build:
-  merge_build_host: true  # [win]
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
@@ -41,7 +39,6 @@ requirements:
     - liblapack
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     - r-rcpp >=1.0.0
     - r-rcpparmadillo
     - r-rmumps >=5.2.1_6
